@@ -14,10 +14,8 @@ Setelah diperoleh vektor profil user, kita dapat memprediksi film mana yang akan
 Kita bisa hitung perkiraan rating yang akan diberikan oleh user A dengan cara yang mirip dengan sebelumnya. Yakni merata-rata hasil perkalian profil film tersebut dengan profil user.
 
 IMPLEMENTASI
-Di kode tersebut saya menggunakan 21 fitur: 19 fitur pertama adalah genre film, dan 2 fitur berikutnya adalah aktor utama pada film tersebut (2 nama ini dipilih dari 2 nama aktor yang filmnya paling sering dirating oleh user pada data train), dapat dilihat pada variabel list `features`.
-Lalu inti dari kode tersebut terbagi menjadi tiga bagian (dapat dibaca di comment section kode tersebut):
+Di kode tersebut saya menggunakan 21 fitur: 19 fitur pertama adalah genre film, dan 2 fitur berikutnya adalah aktor utama pada film tersebut (2 nama ini dipilih dari 2 nama aktor yang filmnya paling sering dirating oleh user pada data train), Lalu inti dari kode tersebut terbagi menjadi tiga bagian (dapat dibaca di comment section kode tersebut):
 
 Memformat dataset, karena dataset yang tersedia bukan one-hotencoded seperti tabel contoh di atas maka perlu penyesuaian terlebih dahulu.
 Membuat user profile, sesuai dengan rumus di atas menggunakan rata-rata rating tiap fitur
-Memprediksi hasil pada data test, sesuai dengan cara di atas menggunakan rata-rata juga..
-Hasil prediksi dapat dilihat di file `result.csv` setelah program dijalankan. Jika diperhatikan hasilnya belum terlalu bagus, tetapi beberapa film yang di rating oleh user dengan hasil yang tinggi juga berhasil terprediksi dengan nilai yang tinggi.
+Memprediksi hasil pada data test, sesuai dengan cara di atas menggunakan rata-rata juga, setelah program dijalankan. Jika diperhatikan hasilnya belum terlalu bagus, tetapi beberapa film yang di rating oleh user dengan hasil yang tinggi juga berhasil terprediksi dengan nilai yang tinggi.
