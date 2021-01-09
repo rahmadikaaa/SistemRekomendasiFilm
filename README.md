@@ -1,21 +1,23 @@
-# Content-Based Movie Recommender System
+# UAS_SPK_AlfianAmmar_171011402082
+Alfian Ammar / 171011402082 / 04TPLM004 V.107
+1. MEMBUAT MATRIX RIWAYAT USER
+Content-based menggunakan riwayat user dan profil item sebagai bahan dasar saat merekomendasikan. Untuk movie recommender, pertama-tama kita buat matrix atau tabel yang barisnya merupakan daftar semua film yang telah dirating oleh user, dan kolomnya ada semua “fitur” atau profil dari sebuah film.
 
-This is a simple Content-Based Movie Recommender System implemented using Python. I use a modified data from MovieLens Dataset (see `formatted_data/`).
+“Fitur” atau profil film ini dapat kita tentukan sendiri dengan beragam cara dari yang sederhana hingga rumit. Yang paling sederhana adalah dengan mengekstrak secara manual profil sebuah film yang biasanya menjadi pertimbangan dalam menonton. Misalnya saya contohkan pada tabel di bawah adalah genre sebuah film.
 
-**Please Note** I use this program to as demo when teaching content-based recommender system, so this program is not intended to be used in the production.
+2. DAPATKAN VEKTOR PROFIL USER
+Vektor profil user adalah sebuah vektor (array 1 dimensi) yang merangkum matrix riwayatnya. Paling sederhana adalah dengan menjumlahkan semua nilai pada kolom fitur yang sama (tidak termasuk kolom rating).
+Tetapi metode menjumlahkan tentu tidak “merangkum” dengan baik. Tampak nilai pada kolom Sci-fi, Thriller, dan Horror adalah sama tanpa menunjukkan mana yang lebih disukai. Metode ini juga bisa menghasilkan bias. Seorang user bisa jadi dianggap menyukai kategori yang sering dia tonton, walaupun dia selalu memberi rating dengan nilai buruk pada kategori tersebut.
 
-### Prerequisite
+3. PREDIKSI RATING FILM BERDASARKAN PROFIL
+Setelah diperoleh vektor profil user, kita dapat memprediksi film mana yang akan disukai oleh user. Misalnya jika diketahui dua film berikut, kira-kira mana yang lebih disukai?
+Kita bisa hitung perkiraan rating yang akan diberikan oleh user A dengan cara yang mirip dengan sebelumnya. Yakni merata-rata hasil perkalian profil film tersebut dengan profil user.
 
-This program needs some package that listed in `requirements.txt`. You can install using the following command:
+IMPLEMENTASI
+Di kode tersebut saya menggunakan 21 fitur: 19 fitur pertama adalah genre film, dan 2 fitur berikutnya adalah aktor utama pada film tersebut (2 nama ini dipilih dari 2 nama aktor yang filmnya paling sering dirating oleh user pada data train), dapat dilihat pada variabel list `features`.
+Lalu inti dari kode tersebut terbagi menjadi tiga bagian (dapat dibaca di comment section kode tersebut):
 
-```
-pip install -r requirements.txt
-```
-
-### Usage
-
-See `README` file in the `formatted_data/` folder to see the properties of the data that used in this recommender system and see `README` in the `utils/` folder to explore and understand how I modified the original dataset to create the training and test data.
-
-### Materials
-
-You can see the slide (written in Bahasa Indonesia) here: [ugm.id/SVMR](ugm.id/SVMR)# SistemRekomendasiFilm
+Memformat dataset, karena dataset yang tersedia bukan one-hotencoded seperti tabel contoh di atas maka perlu penyesuaian terlebih dahulu.
+Membuat user profile, sesuai dengan rumus di atas menggunakan rata-rata rating tiap fitur
+Memprediksi hasil pada data test, sesuai dengan cara di atas menggunakan rata-rata juga..
+Hasil prediksi dapat dilihat di file `result.csv` setelah program dijalankan. Jika diperhatikan hasilnya belum terlalu bagus, tetapi beberapa film yang di rating oleh user dengan hasil yang tinggi juga berhasil terprediksi dengan nilai yang tinggi.
